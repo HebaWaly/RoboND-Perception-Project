@@ -63,7 +63,7 @@ The next step was to use Euclidean Clustering on the object cloud, using cluster
 ![cluster cloud][clusters]
 #### 3. Complete Exercise 3 Steps.  Features extracted and SVM trained. Object recognition implemented.
 Next I got to extract the features from the models using scripts from the `sensor_stick` module. But in order to raise the accuracy of my model, I had to make some changes to it:
-1- In `sensor_stick/src/sensor_stick/features.py` I changed the number of bins used to construct both the color and normals histograms from 32 to 200.
+1- In `sensor_stick/src/sensor_stick/features.py` [here](https://github.com/HebaWaly/RoboND-Perception-Exercises/blob/master/Exercise-3/sensor_stick/src/sensor_stick/features.py) I changed the number of bins used to construct both the color and normals histograms from 32 to 200.
 2- In `capture_features.py` I changed the loop do a 100 sample per object instead of 5.
 3- I used hsv when computing the coloured histograms.
 Those 3 changes helped me improve my confusion matrix a lot as shown in the figure below:
@@ -77,11 +77,11 @@ After training my model, the algorithm was able to recognize all objects in the 
 ![world3][world3]
 
 The most challenging part was increasing the accuracy of the model such that it could recognise all the objects in all the 3 test cases.
-First, I used hsv and increased the data samples taken in `capture_features.py` script to 50, and this was enough to pass test #1, but wasn't enough to pass test #2.
+First, I used hsv and increased the data samples taken in [capture_features.py](https://github.com/HebaWaly/RoboND-Perception-Exercises/blob/master/Exercise-3/sensor_stick/src/sensor_stick/features.py) script to 50, and this was enough to pass test #1, but wasn't enough to pass test #2.
 ![confusion1][confusion1]
 So I changed the bins number of the histograms from 32 to 64 in both `compute_color_histograms()` and `compute_normal_histograms()` methods, and this helped me raise my confusion matrix for test #2 and identify all 5 objects, but again this wasn't enough for test #3 to work.
 ![confusion2][confusion2]
-So then I raised the bins number again from 64 to 200, and raised the samples loop counter from 50 to 100 in `capture_features.py` and my third confusion matrix was good to proceed with.
+So then I raised the bins number again from 64 to 200, and raised the samples loop counter from 50 to 100 in [capture_features.py](https://github.com/HebaWaly/RoboND-Perception-Exercises/blob/master/Exercise-3/sensor_stick/src/sensor_stick/features.py) and my third confusion matrix was good to proceed with.
 ![confusion3][confusion3]
 
 All output files are saved in the `/scripts` directory.
