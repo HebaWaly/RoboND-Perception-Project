@@ -29,6 +29,8 @@
 [objects]: ./writeup_images/objects.png
 [table]: ./writeup_images/table.png
 [clusters]: ./writeup_images/clusters.png
+[confusion1]: ./writeup_images/confusion1.png
+[confusion2]: ./writeup_images/confusion2.png
 [confusion3]: ./writeup_images/confusion3.png
 [world1]: ./writeup_images/world1.png
 [world2]: ./writeup_images/world2.png
@@ -74,6 +76,14 @@ After training my model, the algorithm was able to recognize all objects in the 
 ![world2][world2]
 ![world3][world3]
 
+The most challenging part was increasing the accuracy of the model such that it could recognise all the objects in all the 3 test cases.
+First, I used hsv and increased the data samples taken in `capture_features.py` script to 50, and this was enough to pass test #1, but wasn't enough to pass test #2.
+![confusion1][confusion1]
+So I changed the bins number of the histograms from 32 to 64 in both `compute_color_histograms()` and `compute_normal_histograms()` methods, and this helped me raise my confusion matrix for test #2 and identify all 5 objects, but again this wasn't enough for test #3 to work.
+![confusion2][confusion2]
+So then I raised the bins number again from 64 to 200, and raised the samples loop counter from 50 to 100 in `capture_features.py` and my third confusion matrix was good to proceed with.
+![confusion3][confusion3]
 
+All output files are saved in the `/scripts` directory.
 
 
