@@ -36,7 +36,7 @@ def plot_confusion_matrix(cm, classes,
     plt.xlabel('Predicted label')
 
 # Load training data from disk
-training_set = pickle.load(open('src/RoboND-Perception-Project/pr2_robot/scripts/training_set.sav', 'rb'))
+training_set = pickle.load(open('src/RoboND-Perception-Project/pr2_robot/scripts/training_set_3.sav', 'rb'))
 
 # Format the features and labels for use with scikit learn
 feature_list = []
@@ -62,7 +62,8 @@ encoder = LabelEncoder()
 y_train = encoder.fit_transform(y_train)
 
 # Create classifier
-clf = svm.SVC(kernel='linear')
+#clf = svm.SVC(kernel='linear')
+clf = svm.SVC( kernel='linear')
 
 # Set up 5-fold cross-validation
 kf = cross_validation.KFold(len(X_train),
@@ -101,7 +102,7 @@ clf.fit(X=X_train, y=y_train)
 model = {'classifier': clf, 'classes': encoder.classes_, 'scaler': X_scaler}
 
 # Save classifier to disk
-pickle.dump(model, open('model_2.sav', 'wb'))
+pickle.dump(model, open('model_3.sav', 'wb'))
 
 # Plot non-normalized confusion matrix
 plt.figure()

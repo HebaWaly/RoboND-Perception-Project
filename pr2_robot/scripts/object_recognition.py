@@ -205,7 +205,7 @@ def pr2_mover(object_list):
     object_list_param = rospy.get_param('/object_list')
     yaml_dicts = []
     test_scene_num = Int32()
-    test_scene_num.data = 1
+    test_scene_num.data = 3
     for object_param in object_list_param: 
         object_name = String()
         object_name.data = object_param['name']
@@ -259,7 +259,7 @@ def pr2_mover(object_list):
     # TODO: Loop through the pick list
     
     # TODO: Output your request parameters into output yaml file
-    send_to_yaml('output1.yml', yaml_dicts)
+    send_to_yaml('output3.yml', yaml_dicts)
 
 
 if __name__ == '__main__':
@@ -276,7 +276,7 @@ if __name__ == '__main__':
     detected_objects_pub = rospy.Publisher("/detected_objects", DetectedObjectsArray, queue_size=1)
 
     # Load Model From disk
-    model = pickle.load(open('model.sav', 'rb'))
+    model = pickle.load(open('model_3.sav', 'rb'))
     clf = model['classifier']
     encoder = LabelEncoder()
     encoder.classes_ = model['classes']
