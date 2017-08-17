@@ -125,7 +125,7 @@ def pcl_callback(pcl_msg):
             color_cluster_point_list.append([white_cloud[indice][0],
                                             white_cloud[indice][1],
                                             white_cloud[indice][2],
-                                             rgb_to_float(cluster_color[j])])
+                                            rgb_to_float(cluster_color[j])])
     #Create new cloud containing all clusters, each with unique color
     cluster_cloud = pcl.PointCloud_PointXYZRGB()
     cluster_cloud.from_list(color_cluster_point_list)
